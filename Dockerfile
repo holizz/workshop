@@ -23,6 +23,7 @@ RUN adduser --gecos '' --shell /bin/zsh --disabled-password core
 RUN usermod -aG sudo core
 
 COPY dotfiles/ /home/core
+RUN chown core:core -R /home/core
 
 # Running
 
