@@ -61,8 +61,8 @@ alias wget='wget --no-glob -erobots=off'
 alias curl='curl -gsS'
 
 # Golang
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=/workbench/code
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # Treatment for neuropathy
 alias g=git
