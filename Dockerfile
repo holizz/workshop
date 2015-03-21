@@ -6,7 +6,10 @@ RUN apt-get update && apt-get -y dist-upgrade && apt-get clean
 
 # Install things we need
 
-RUN apt-get install -y --no-install-recommends git vim-nox zsh tmux wget ca-certificates build-essential pkg-config automake locales-all man-db manpages less openssh-client sudo tig file curl
+RUN apt-get install -y --no-install-recommends git vim-nox zsh tmux wget ca-certificates build-essential pkg-config automake locales-all man-db manpages less openssh-client sudo tig file curl nodejs npm silversearcher-ag
+
+# Fix node
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # Install non-APT things
 
