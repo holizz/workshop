@@ -183,9 +183,6 @@ let g:go_disable_autoinstall = 1
 " vim-go - run goimports automatically
 let g:go_fmt_command = "goimports"
 
-" disable syntastic for Go - we use vim-go
-let g:syntastic_disabled_filetypes=['go']
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ .vimrc.local
 

@@ -37,6 +37,7 @@ RUN git -C /home/core/.vim/bundle clone https://github.com/sunaku/vim-unbundle.g
 RUN git -C /home/core/.vim/bundle clone https://github.com/tpope/vim-commentary.git
 RUN git -C /home/core/.vim/bundle clone https://github.com/msanders/snipmate.vim.git
 RUN git -C /home/core/.vim/bundle clone https://github.com/fatih/vim-go.git
+RUN git -C /home/core/.vim/bundle clone https://github.com/scrooloose/syntastic.git
 
 # Running
 
