@@ -28,7 +28,8 @@ RUN adduser --gecos '' --shell /bin/zsh --disabled-password core
 RUN usermod -aG sudo core
 
 COPY dotfiles/ /home/core
-RUN chown core:core -R /home/core
+RUN mkdir -p /home/core/.ssh
+COPY keys/* /home/core/.ssh/
 
 # vim
 
@@ -38,6 +39,8 @@ RUN git -C /home/core/.vim/bundle clone https://github.com/tpope/vim-commentary.
 RUN git -C /home/core/.vim/bundle clone https://github.com/msanders/snipmate.vim.git
 RUN git -C /home/core/.vim/bundle clone https://github.com/fatih/vim-go.git
 RUN git -C /home/core/.vim/bundle clone https://github.com/scrooloose/syntastic.git
+
+RUN chown core:core -R /home/core
 
 # Running
 
