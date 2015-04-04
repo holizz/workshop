@@ -46,4 +46,4 @@ RUN chown core:core -R /home/core
 
 USER core
 WORKDIR /workbench
-CMD tmux -u2
+CMD ["tmux", "-u2"]
