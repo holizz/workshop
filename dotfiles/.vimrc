@@ -193,4 +193,4 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Unbundle
 
-runtime bundle/vim-unbundle/unbundle.vim
+runtime bundle/vim-unbundle/plugin/unbundle.vim
