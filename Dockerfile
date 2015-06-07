@@ -2,7 +2,9 @@ FROM debian:jessie
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get -y dist-upgrade && apt-get clean
+RUN apt-get update \
+ && apt-get -y dist-upgrade \
+ && apt-get clean
 
 # Install things we need
 
@@ -17,7 +19,8 @@ RUN wget --quiet https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.g
 
 # Set things up
 
-RUN rm /etc/localtime && ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+RUN rm /etc/localtime \
+ && ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN echo '%sudo ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # User
