@@ -8,7 +8,7 @@ RUN apt-get update \
 
 # Install things we need
 
-RUN apt-get install -y --no-install-recommends git vim-nox zsh tmux wget ca-certificates build-essential pkg-config automake locales-all man-db manpages less openssh-client sudo tig file curl nodejs npm silversearcher-ag python python3 unzip libevent-dev libncurses5-dev
+RUN apt-get install -y --no-install-recommends git vim-nox zsh tmux wget ca-certificates build-essential pkg-config automake locales-all man-db manpages less openssh-client sudo tig file curl nodejs npm silversearcher-ag python python3 unzip libevent-dev libncurses5-dev netcat-openbsd whois
 
 # Fix node
 RUN ln -s /usr/bin/nodejs /usr/bin/node
