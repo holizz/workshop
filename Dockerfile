@@ -11,23 +11,14 @@ RUN apt-get update \
 RUN apt-get install -y --no-install-recommends git vim-nox zsh tmux wget ca-certificates build-essential pkg-config automake locales-all man-db manpages less openssh-client sudo tig file curl nodejs npm silversearcher-ag python python3 unzip libevent-dev libncurses5-dev netcat-openbsd whois
 
 # Fix node
+
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # Go
 
-# Get a 1.4 binary
-RUN mkdir -p /src
-RUN wget --quiet https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz -O /src/go.tar.gz \
- && tar -C /src -xzf /src/go.tar.gz \
- && rm /src/go.tar.gz
-# Build master from source
-RUN git clone --branch master https://go.googlesource.com/go /src/golatest \
- && mv /src/golatest /usr/local/go \
- && cd /usr/local/go/src \
- && GOROOT_BOOTSTRAP=/src/go ./make.bash \
- && rm -rf /usr/local/go/.git
-RUN rm -rf /src
-ENV PATH=$PATH:/usr/local/go/bin
+RUN wget --quiet https://storage.googleapis.com/golang/go1.5beta1.linux-amd64.tar.gz -O /go.tar.gz \
+ && tar -C /usr/local -xzf /go.tar.gz \
+ && rm /go.tar.gz
 
 # Set things up
 
