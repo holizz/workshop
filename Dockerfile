@@ -1,18 +1,19 @@
-FROM debian:jessie
+FROM fedora
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update \
- && apt-get -y dist-upgrade \
- && apt-get clean
+RUN dnf upgrade -y \
+ && dnf clean all
 
 # Install things we need
 
-RUN apt-get install -y --no-install-recommends git vim-nox zsh tmux wget ca-certificates build-essential pkg-config automake locales-all man-db manpages less openssh-client sudo tig file curl nodejs npm silversearcher-ag python python3 unzip libevent-dev libncurses5-dev netcat-openbsd whois
-
-# Fix node
-
-RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN dnf install -y \
+                   man-db openssh-clients less findutils sudo tar which xz bzip2 \
+                   git vim zsh tmux tig \
+                   automake pkgconfig \
+                   curl wget file unzip whois \
+                   the_silver_searcher \
+                   nodejs npm \
+                   nmap nmap-ncat \
+ && dnf clean all
 
 # Go
 
@@ -24,12 +25,11 @@ RUN wget --quiet https://storage.googleapis.com/golang/go1.5beta1.linux-amd64.ta
 
 RUN rm /etc/localtime \
  && ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-RUN echo '%sudo ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'core ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # User
 
-RUN adduser --gecos '' --shell /bin/zsh --disabled-password core
-RUN usermod -aG sudo core
+RUN useradd --password '' --shell /usr/bin/zsh core
 
 COPY dotfiles/ /home/core
 RUN mkdir -p /home/core/.ssh
