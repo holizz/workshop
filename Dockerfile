@@ -6,7 +6,7 @@ RUN dnf upgrade -y \
 # Install things we need
 
 RUN dnf install -y \
-                   man-db openssh-clients less findutils sudo tar which xz bzip2 \
+                   man-db openssh-clients less findutils sudo tar which xz bzip2 bind-utils \
                    git vim zsh tmux tig \
                    automake pkgconfig \
                    curl wget file unzip whois \
