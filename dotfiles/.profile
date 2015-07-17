@@ -63,6 +63,7 @@ alias curl='curl -gsS'
 # Golang
 export GOPATH=/workbench
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export GO15VENDOREXPERIMENT=1
 
 # Treatment for neuropathy
 alias g=git
