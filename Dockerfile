@@ -8,7 +8,7 @@ RUN dnf upgrade -y \
 RUN dnf install -y \
                    man-db openssh-clients less findutils sudo tar which xz bzip2 bind-utils \
                    git vim zsh tmux tig \
-                   automake pkgconfig \
+                   make automake pkgconfig \
                    curl wget file unzip whois \
                    the_silver_searcher \
                    nodejs npm \
