@@ -19,10 +19,9 @@ export LC_COLLATE=C
 export LESSCHARSET=utf-8
 
 # PATH
-export PATH=/sbin:/bin:\
-/usr/sbin:/usr/bin:\
-/usr/local/sbin:/usr/local/bin:\
-/usr/local/games:/usr/games:\
+export PATH=\
+/usr/sbin:/usr/bin:/usr/games:\
+/usr/local/sbin:/usr/local/bin:/usr/local/games:\
 ~/bin
 
 # Aliases
