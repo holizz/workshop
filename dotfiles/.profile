@@ -21,8 +21,7 @@ export LESSCHARSET=utf-8
 # PATH
 export PATH=\
 /usr/sbin:/usr/bin:/usr/games:\
-/usr/local/sbin:/usr/local/bin:/usr/local/games:\
-~/bin
+/usr/local/sbin:/usr/local/bin:/usr/local/games
 
 # Aliases
 [ X$TERM = Xscreen ] && alias screen='screen -e ^Oo'
