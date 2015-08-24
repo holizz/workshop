@@ -17,7 +17,7 @@ RUN dnf install -y \
 
 # Go
 
-RUN wget --quiet https://storage.googleapis.com/golang/go1.5beta3.linux-amd64.tar.gz -O /go.tar.gz \
+RUN wget --quiet https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz -O /go.tar.gz \
  && tar -C /usr/local -xzf /go.tar.gz \
  && rm /go.tar.gz
 
