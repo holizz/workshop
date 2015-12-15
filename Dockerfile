@@ -12,7 +12,7 @@ RUN dnf install -y \
                    curl wget file unzip whois \
                    the_silver_searcher \
                    nodejs npm \
-                   nmap nmap-ncat \
+                   nmap nmap-ncat traceroute \
  && dnf clean all
 
 # Go
