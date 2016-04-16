@@ -7,8 +7,9 @@ RUN dnf upgrade -y \
 
 RUN dnf install -y \
                    man-db openssh-clients less findutils sudo tar which xz bzip2 bind-utils iputils iproute procps-ng man-pages \
-                   git mercurial vim zsh tmux tig \
+                   git mercurial vim zsh tig \
                    make automake pkgconfig \
+                   libevent-devel ncurses-devel \
                    curl wget file unzip whois \
                    the_silver_searcher \
                    nodejs npm \
@@ -20,6 +21,17 @@ RUN dnf install -y \
 RUN wget --quiet https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz -O /go.tar.gz \
  && tar -C /usr/local -xzf /go.tar.gz \
  && rm /go.tar.gz
+
+# tmux
+
+RUN wget --quiet https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz -O /tmux.tar.gz \
+ && tar xzf tmux.tar.gz \
+ && cd /tmux-2.1 \
+ && ./configure \
+ && make \
+ && make install \
+ && cd / \
+ && rm -rf /tmux-2.1
 
 # Set things up
 
