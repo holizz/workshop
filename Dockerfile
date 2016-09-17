@@ -16,6 +16,11 @@ RUN dnf install -y \
                    nmap nmap-ncat traceroute \
  && dnf clean all
 
+# Docker
+
+COPY docker.repo /etc/yum.repos.d/
+RUN dnf install -y docker-engine
+
 # Go
 
 RUN wget --quiet https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz -O /go.tar.gz \
