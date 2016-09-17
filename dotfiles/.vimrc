@@ -155,13 +155,6 @@ let g:go_disable_autoinstall = 1
 let g:go_fmt_command = "goimports"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" .vimrc.local
-
-if filereadable(expand($MYVIMRC.'.local'))
-  source $MYVIMRC.local
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Unbundle
 
 runtime bundle/vim-unbundle/plugin/unbundle.vim
