@@ -154,6 +154,11 @@ let g:go_disable_autoinstall = 1
 " vim-go - run goimports automatically
 let g:go_fmt_command = "goimports"
 
+" fix vim-go/syntastic issues
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Unbundle
 
