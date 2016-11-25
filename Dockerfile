@@ -19,7 +19,7 @@ RUN dnf install -y \
 # Docker
 
 COPY docker.repo /etc/yum.repos.d/
-RUN dnf install -y docker-engine
+RUN dnf install -y docker-engine-1.11.1
 
 # Go
 
