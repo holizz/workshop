@@ -38,6 +38,9 @@ RUN wget --quiet https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar
  && cd / \
  && rm -rf /tmux-2.1
 
+# json
+RUN npm install -g json
+
 # Set things up
 
 RUN rm /etc/localtime \
