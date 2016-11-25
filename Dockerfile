@@ -8,7 +8,7 @@ RUN dnf upgrade -y \
 RUN dnf install -y \
                    man-db openssh-clients less findutils sudo tar which xz bzip2 bind-utils iputils iproute procps-ng man-pages \
                    git mercurial vim zsh tig \
-                   make automake pkgconfig \
+                   make automake pkgconfig gcc \
                    libevent-devel ncurses-devel \
                    curl wget file unzip whois \
                    the_silver_searcher \
