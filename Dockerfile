@@ -23,7 +23,7 @@ RUN dnf install -y docker-engine-1.11.1
 
 # Go
 
-RUN wget --quiet https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz -O /go.tar.gz \
+RUN wget --quiet https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz -O /go.tar.gz \
  && tar -C /usr/local -xzf /go.tar.gz \
  && rm /go.tar.gz
 
