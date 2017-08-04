@@ -1,25 +1,62 @@
-FROM fedora:25
+FROM debian:stretch
 
-RUN dnf upgrade -y \
- && dnf clean all
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+ && apt-get -y dist-upgrade \
+ && apt-get clean
 
 # Install things we need
 
-RUN dnf install -y \
-                   man-db openssh-clients less findutils sudo tar which xz bzip2 bind-utils iputils iproute procps-ng man-pages \
-                   git mercurial vim zsh tig \
-                   make automake pkgconfig gcc \
-                   libevent-devel ncurses-devel \
-                   curl wget file unzip whois \
-                   the_silver_searcher \
-                   nodejs npm \
-                   nmap nmap-ncat traceroute \
- && dnf clean all
+RUN apt-get update \
+ && apt-get install -y \
+        ca-certificates \
+        man-db \
+        less \
+        findutils \
+        sudo \
+        tar \
+        bzip2 \
+        iproute \
+        git \
+        mercurial \
+        vim \
+        zsh \
+        tig \
+        make \
+        automake \
+        gcc \
+        curl \
+        wget \
+        file \
+        unzip \
+        whois \
+        nodejs \
+        nmap \
+        traceroute \
+        bind9-host \
+        silversearcher-ag \
+        openssh-client \
+        procps \
+        software-properties-common \
+        gnupg \
+        apt-transport-https \
+        libevent-dev \
+        libncurses5-dev \
+        locales \
+ && apt-get clean
 
 # Docker
 
-COPY docker.repo /etc/yum.repos.d/
-RUN dnf install -y docker-engine-1.11.1
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"
+
+RUN apt-get update && apt-get install -y docker-ce && apt-get clean
+# RUN dnf install -y docker-engine-1.11.1
+# RUN wget https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz
+
+# Fix nodejs
+RUN ln -s /usr/bin/nodejs /usr/local/bin/node
 
 # Go
 
@@ -39,17 +76,20 @@ RUN wget --quiet https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar
  && rm -rf /tmux-2.1
 
 # json
-RUN npm install -g json
+# RUN npm install -g json
 
 # Set things up
 
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
+ && locale-gen
 RUN rm /etc/localtime \
  && ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-RUN echo 'core ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo '%sudo ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # User
 
-RUN useradd --password '' --shell /usr/bin/zsh core
+RUN adduser --gecos '' --shell /bin/zsh --disabled-password core
+RUN usermod -aG sudo core
 
 COPY dotfiles/ /home/core
 RUN mkdir -p /home/core/.ssh
@@ -68,6 +108,7 @@ RUN chown core:core -R /home/core
 
 # Running
 
+ENV DEBIAN_FRONTEND=
 USER core
 WORKDIR /workbench
 CMD ["tmux", "-u2"]
