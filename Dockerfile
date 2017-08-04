@@ -52,8 +52,8 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"
 
 RUN apt-get update && apt-get install -y docker-ce && apt-get clean
-# RUN dnf install -y docker-engine-1.11.1
-# RUN wget https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz
+RUN wget --quiet https://github.com/docker/compose/releases/download/1.15.0/docker-compose-Linux-x86_64 -O /usr/local/bin/docker-compose \
+ && chmod 755 /usr/local/bin/docker-compose
 
 # Fix nodejs
 RUN ln -s /usr/bin/nodejs /usr/local/bin/node

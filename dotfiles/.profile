@@ -65,3 +65,4 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 # Treatment for neuropathy
 alias g=git
 alias v=$VISUAL
+alias dc=docker-compose
