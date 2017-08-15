@@ -45,6 +45,7 @@ RUN apt-get update \
         libncurses5-dev \
         locales \
         tree \
+        netcat-openbsd \
  && apt-get clean
 
 # Docker
