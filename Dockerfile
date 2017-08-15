@@ -44,6 +44,7 @@ RUN apt-get update \
         libevent-dev \
         libncurses5-dev \
         locales \
+        tree \
  && apt-get clean
 
 # Docker
