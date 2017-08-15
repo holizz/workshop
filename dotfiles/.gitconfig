@@ -6,6 +6,7 @@
 [alias]
   p = !git pull --ff-only && git submodule update --init --recursive
   st = status
+  c = checkout
   ci = commit
   cia = commit -a
   di = diff
