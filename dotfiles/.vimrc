@@ -161,6 +161,20 @@ let g:go_list_type = "quickfix"
 nnoremap <Leader>b :GoBuild<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" iferr
+
+function GoIfErr()
+  let path = '/tmp/goiferr.txt'
+  let position = line2byte(line('.'))+col('.')
+  execute 'write!' path
+  let output = system('iferr '.shellescape(path).' '.shellescape(position))
+  let chomped = substitute(output, '\n\+$', '', '')
+  return chomped
+endfunction
+
+iabbrev <expr> iferr GoIfErr()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Unbundle
 
 runtime bundle/vim-unbundle/plugin/unbundle.vim
