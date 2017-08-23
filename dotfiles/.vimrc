@@ -167,12 +167,10 @@ function GoIfErr()
   let path = '/tmp/goiferr.txt'
   let position = line2byte(line('.'))+col('.')
   execute 'write!' path
-  let output = system('iferr '.shellescape(path).' '.shellescape(position))
-  let chomped = substitute(output, '\n\+$', '', '')
-  return chomped
+  return system('iferr '.shellescape(path).' '.shellescape(position))
 endfunction
 
-iabbrev <expr> iferr GoIfErr()
+inoremap <C-E> <C-R>=GoIfErr()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Unbundle
