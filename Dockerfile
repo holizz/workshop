@@ -105,7 +105,7 @@ RUN git -C /home/core/.vim/bundle clone https://github.com/tpope/vim-commentary.
 RUN git -C /home/core/.vim/bundle clone https://github.com/msanders/snipmate.vim.git
 RUN git -C /home/core/.vim/bundle clone https://github.com/fatih/vim-go.git
 RUN git -C /home/core/.vim/bundle clone https://github.com/scrooloose/syntastic.git
-RUN go get github.com/TrustRevoked/iferr
+RUN /usr/local/bin/go get github.com/TrustRevoked/iferr
 
 RUN chown core:core -R /home/core
 
