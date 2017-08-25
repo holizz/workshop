@@ -62,7 +62,7 @@ RUN ln -s /usr/bin/nodejs /usr/local/bin/node
 
 # Go
 
-RUN wget --quiet https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz -O /go.tar.gz \
+RUN wget --quiet https://storage.googleapis.com/golang/`curl -s https://golang.org/VERSION?m=text`.linux-amd64.tar.gz -O /go.tar.gz \
  && tar -C /usr/local -xzf /go.tar.gz \
  && rm /go.tar.gz
 
